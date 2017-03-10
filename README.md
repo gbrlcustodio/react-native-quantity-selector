@@ -4,7 +4,7 @@
 ### Usage
 ```javascript
 import React, { Component } from 'react';
-import QuantitySelector from 'react-quantity-textinput';
+import QuantitySelector from 'react-native-quantity-textinput';
 
 export default class Form extends Component {
 	render() {
@@ -16,7 +16,7 @@ export default class Form extends Component {
 ### Optional
 ```javascript
 import React, { Component } from 'react';
-import QuantitySelector from 'react-quantity-textinput';
+import QuantitySelector from 'react-native-quantity-textinput';
 
 export default class Form extends Component {
 	render() {
