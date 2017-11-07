@@ -1,51 +1,46 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { View, Text, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './styles'
 
-class QuantitySelector extends Component {
+export default class QuantitySelector extends PureComponent {
+  static defaultProps = {
+    minQuantity: 0,
+    baseColor: '#b2b2b2'
+  }
+
+  static propTypes = {
+    minQuantity: React.PropTypes.number,
+    maxQuantity: React.PropTypes.number,
+    baseColor: React.PropTypes.string
+  }
+
   constructor(props) {
     super(props)
 
-    this.state = { quantity: 1 }
-  }
-
-  componentWillMount() {
-    if (this.props.input.value || this.props.value) {
-      this.setState({
-        quantity: this.props.input.value || this.props.value
-      })
-    }
+    this.state = { quantity: props.input.value || props.value || props.minQuantity }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.props.onChange !== undefined) {
+    if (this.props.onChange) {
       this.props.onChange(nextState.quantity)
     }
 
-    if (this.props.input.onChange !== undefined) {
+    if (this.props.input && this.props.input.onChange) {
       this.props.input.onChange(nextState.quantity)
     }
   }
 
   _onIncreaseQuantity = () => {
-    if (this.props.maxQuantity !== undefined && this.state.quantity >= this.props.maxQuantity) {
-      return
+    if (this.props.maxQuantity === undefined || this.state.quantity < this.props.maxQuantity) {
+      this.setState({ quantity: this.state.quantity + 1 })
     }
-
-    this.setState({
-      quantity: this.state.quantity + 1
-    })
   }
 
   _onDecreaseQuantity = () => {
-    if (this.props.minQuantity !== undefined && this.state.quantity <= this.props.minQuantity) {
-      return
+    if (this.props.minQuantity === undefined || this.state.quantity > this.props.minQuantity) {
+      this.setState({ quantity: this.state.quantity - 1 })
     }
-
-    this.setState({
-      quantity: this.state.quantity - 1
-    })
   }
 
   _onStartDecreaseQuantity = () => {
@@ -98,16 +93,3 @@ class QuantitySelector extends Component {
     )
   }
 }
-
-QuantitySelector.defaultProps = {
-  minQuantity: 0,
-  baseColor: '#b2b2b2'
-}
-
-QuantitySelector.propTypes = {
-  minQuantity: React.PropTypes.number,
-  maxQuantity: React.PropTypes.number,
-  baseColor: React.PropTypes.string
-}
-
-export default QuantitySelector

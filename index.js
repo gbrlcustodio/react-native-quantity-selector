@@ -1,3 +1,3 @@
-import QuantitySelector from './src/quantity-selector'
+import QuantitySelector from './src/quantitySelector'
 
 export default QuantitySelector

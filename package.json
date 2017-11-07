@@ -1,11 +1,11 @@
 {
-  "name": "quantity-selector",
-  "version": "0.0.1",
-  "description": "A implementation for simple React Native quantity selector",
+  "name": "react-native-quantity-selector",
+  "version": "0.0.2",
+  "description": "A simple quantity selector implementation for React Native",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Appetiza/redux-quantity-selector"
+    "url": "https://github.com/gcmartins93/react-native-quantity-selector"
   },
   "keywords": [
     "React",
@@ -14,8 +14,6 @@
     "selector"
   ],
   "peerDependencies": {
-    "react": ">=15.3.1",
-    "react-native": "*",
     "react-native-vector-icons": "~4.0.0"
   },
   "author": {
@@ -23,5 +21,8 @@
     "email": "gcmartins93@gmail.com",
     "url": "https://github.com/gcmartins93"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.0.0"
+  }
 }
