@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import styles from './styles'
@@ -10,9 +11,9 @@ export default class QuantitySelector extends PureComponent {
   }
 
   static propTypes = {
-    minQuantity: React.PropTypes.number,
-    maxQuantity: React.PropTypes.number,
-    baseColor: React.PropTypes.string
+    minQuantity: PropTypes.number,
+    maxQuantity: PropTypes.number,
+    baseColor: PropTypes.string
   }
 
   constructor(props) {
