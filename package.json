@@ -14,7 +14,7 @@
     "selector"
   ],
   "peerDependencies": {
-    "react-native-vector-icons": "~4.0.0"
+    "react-native-vector-icons": "*"
   },
   "author": {
     "name": "Gabriel Custódio",
