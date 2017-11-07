@@ -20,6 +20,10 @@ export default class QuantitySelector extends PureComponent {
     super(props)
 
     this.state = { quantity: props.input.value || props.value || props.minQuantity }
+    
+    if (props.input.onChange) {
+      props.input.onChange(this.state.quantity)
+    }
   }
 
   componentWillUpdate(nextProps, nextState) {
