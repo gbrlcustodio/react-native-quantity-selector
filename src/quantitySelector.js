@@ -40,28 +40,24 @@ export default class QuantitySelector extends PureComponent {
     if (this.props.maxQuantity === undefined || this.state.quantity < this.props.maxQuantity) {
       this.setState({ quantity: this.state.quantity + 1 })
     }
+
+    this.increaseTimer = setTimeout(this._onIncreaseQuantity, 200)
   }
 
   _onDecreaseQuantity = () => {
     if (this.props.minQuantity === undefined || this.state.quantity > this.props.minQuantity) {
       this.setState({ quantity: this.state.quantity - 1 })
     }
-  }
 
-  _onStartDecreaseQuantity = () => {
-    this.decreaseLoop = setInterval(this._onDecreaseQuantity, 100)
+    this.decreaseTimer = setTimeout(this._onDecreaseQuantity, 200)
   }
 
   _onStopDecreaseQuantity = () => {
-    clearInterval(this.decreaseLoop)
-  }
-
-  _onStartIncreaseQuantity = () => {
-    this.increaseLoop = setInterval(this._onIncreaseQuantity, 100)
+    clearInterval(this.decreaseTimer)
   }
 
   _onStopIncreaseQuantity = () => {
-    clearInterval(this.increaseLoop)
+    clearInterval(this.increaseTimer)
   }
 
   render() {
@@ -74,7 +70,7 @@ export default class QuantitySelector extends PureComponent {
           underlayColor='transparent'
           style={ styles.actionButton }
           iconStyle={ styles.icon }
-          onPressIn={ this._onStartDecreaseQuantity }
+          onPressIn={ this._onDecreaseQuantity }
           onPressOut={ this._onStopDecreaseQuantity }
           name='remove-circle-outline' />
         <TextInput
@@ -91,7 +87,7 @@ export default class QuantitySelector extends PureComponent {
           underlayColor='transparent'
           style={ styles.actionButton }
           iconStyle={ styles.icon }
-          onPressIn={ this._onStartIncreaseQuantity }
+          onPressIn={ this._onIncreaseQuantity }
           onPressOut={ this._onStopIncreaseQuantity }
           name='add-circle-outline' />
       </View>
