@@ -62,7 +62,7 @@ export default class QuantitySelector extends PureComponent {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={[ styles.container, this.props.style ]}>
         <Icon.Button
           size={ 30 }
           backgroundColor='transparent'
